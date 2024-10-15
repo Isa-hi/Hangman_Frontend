@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Arduino"
+		},
+		{
+			"path": "../uptask_backend"
+		},
+		{
+			"path": "../uptask_frontend"
+		},
+		{
+			"path": "../pacientes-zustand"
+		}
+	]
+}
