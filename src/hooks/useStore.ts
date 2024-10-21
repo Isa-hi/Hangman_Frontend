@@ -2,25 +2,34 @@ import { create } from "zustand";
 
 type gameState = {
   lives: number;
-  word: string;
-  guessed: string;
-  isGameInProgress: boolean;
+  loadedWord: string;
+  guessedWord: string[];
+  isGameStarted: boolean;
+  isGameOver: boolean;
+  question: string;
+
+
   setLives: (lives: number) => void;
-  setWord: (word: string) => void;
-  setGuessed: (guessed: string) => void;
-  setIsGameInProgress: (isGameInProgress: boolean) => void;
+  setloadedWord: (loadedWord: string) => void;
+  setguessedWord: (guessedWord: string[]) => void;
+  setisGameStarted: (isGameStarted: boolean) => void;
+  setIsGameOver: (isGameOver: boolean) => void;
+  setQuestion: (question: string) => void;
 };
 
 const useStore = create<gameState>((set) => ({
   lives: 0,
-  word: "",
-  guessed: "",
-  isGameInProgress: false,
+  loadedWord: "",
+  guessedWord: [],
+  isGameStarted: false,
+  isGameOver: false,
+  question: "",
 
   setLives: (lives: number) => set({ lives }),
-  setWord: (word: string) => set({ word }),
-  setGuessed: (guessed: string) => set({ guessed }),
-  setIsGameInProgress: (isGameInProgress: boolean) => set({ isGameInProgress }),
+  setloadedWord: (loadedWord: string) => set({ loadedWord }),
+  setguessedWord: (guessedWord: string[]) => set({guessedWord}),
+  setisGameStarted: (isGameStarted: boolean) => set({ isGameStarted }),
+  setIsGameOver: (isGameOver: boolean) => set({ isGameOver }),
+  setQuestion: (question: string) => set({ question }),
 }));
-
 export default useStore;

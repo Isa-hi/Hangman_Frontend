@@ -1,32 +1,53 @@
-import { Dispatch, useState } from "react";
+import { useState } from "react";
 import useStore from "../hooks/useStore";
+import { gameOver, gameWon, loseLife, startGame } from "../api/HangmanController";
 
 export default function LettersKeyboard() {
-
-  // Import zustand store
-  const { lives, word, guessed, setLives, setGuessed, isGameInProgress} = useStore();
-
+  const {
+    lives,
+    loadedWord,
+    guessedWord,
+    setLives,
+    setguessedWord,
+    setIsGameOver,
+  } = useStore();
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXZ".split("");
   const [usedLetters, setUsedLetters] = useState<string[]>([]);
 
-  const handleClick = (letter: string) => {    
-    if(word.split('').includes(letter)){
-      // Guess should show the letter in the correct position
-      
-    } else {
-      setLives(lives - 1);
-    }
-    setUsedLetters([...usedLetters, letter]);    
-  }
+  const handleClick = (letter: string) => {
+    if (loadedWord.split("").includes(letter)) {
+      const newGuessedWord = guessedWord.map((char, index) =>
+        loadedWord[index] === letter ? letter : char
+      ) as string[];
 
-  return ( 
+      setguessedWord(newGuessedWord);
+
+      if (!newGuessedWord.includes("_ ")) {
+        gameWon();
+        setIsGameOver(true)
+      }
+    } else {
+      const newLives = lives - 1;
+      setLives(newLives);
+      loseLife(); // Send event to arduino
+      if (newLives <= 0) {
+        gameOver();
+        setIsGameOver(true)
+      }
+    }
+    setUsedLetters([...usedLetters, letter]);
+  };
+
+  return (
     <div className="grid grid-cols-6 gap-4">
       {letters.map((letter) => (
         <button
           key={letter}
           className={`text-white text-2xl font-bold w-16 h-16 rounded-xl transition-colors ${
-            usedLetters.includes(letter) ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#4A0E0E] hover:bg-amber-500 '
+            usedLetters.includes(letter)
+              ? "bg-gray-300 cursor-not-allowed"
+              : "bg-[#4A0E0E] hover:bg-amber-500 "
           }`}
           onClick={() => handleClick(letter)}
           disabled={usedLetters.includes(letter)}
@@ -36,4 +57,8 @@ export default function LettersKeyboard() {
       ))}
     </div>
   );
+}
+
+{
+  /*  */
 }

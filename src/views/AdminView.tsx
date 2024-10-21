@@ -8,23 +8,26 @@ interface Question {
 }
 
 export default function Component() {
-  const [questions, setQuestions] = useState<Question[]>([
-    { id: 1, question: 'Pregunta 1', answer: 'Respuesta 1' },
-    { id: 2, question: 'Pregunta 2', answer: 'Respuesta 2' },
-  ])
+  const storedQuestions = localStorage.getItem('questions')
+
+  const [questions, setQuestions] = useState<Question[]>(storedQuestions ? JSON.parse(storedQuestions) : [])
   const [newQuestion, setNewQuestion] = useState('')
   const [newAnswer, setNewAnswer] = useState('')
 
   const addQuestion = () => {
     if (newQuestion && newAnswer) {
-      setQuestions([...questions, { id: Date.now(), question: newQuestion, answer: newAnswer }])
+      const updatedQuestions = [...questions, { id: Date.now(), question: newQuestion, answer: newAnswer }]
+      setQuestions(updatedQuestions)
       setNewQuestion('')
       setNewAnswer('')
+      localStorage.setItem('questions', JSON.stringify(updatedQuestions))
     }
   }
 
   const deleteQuestion = (id: number) => {
-    setQuestions(questions.filter(q => q.id !== id))
+    const updatedQuestions = questions.filter(q => q.id !== id)
+    setQuestions(updatedQuestions)
+    localStorage.setItem('questions', JSON.stringify(updatedQuestions))
   }
 
   return (
