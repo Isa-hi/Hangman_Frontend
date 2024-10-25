@@ -1,50 +1,99 @@
-# React + TypeScript + Vite
+[<img src="https://img.icons8.com/?size=512&id=55494&format=png" align="right" width="25%" padding-right="350">]()
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# `HANGMAN_FRONTEND`
 
-Currently, two official plugins are available:
+#### <code>❯ REPLACE-ME</code>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="left">
+	<!-- Shields.io badges disabled, using skill icons. --></p>
+<p align="left">
+		<em>Built with the tools and technologies:</em>
+</p>
+<p align="center">
+	<a href="https://skillicons.dev">
+		<img src="https://skillicons.dev/icons?i=react,ts,vite,css,html&theme=light">
+	</a></p>
 
-## Expanding the ESLint configuration
+<br>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+##### 🔗 Table of Contents
 
-- Configure the top-level `parserOptions` property like this:
+- [📍 Overview](#-overview)
+- [📂 Repository Structure](#-repository-structure)
+- [🚀 Getting Started](#-getting-started)
+    - [📦 Installation](#-installation)
+    - [🤖 Usage](#-usage)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 📍 Overview
+
+<code>❯ Interface for a Hangman game that's connected to an Arduino</code>
+
+---
+
+## 📂 Repository Structure
+
+```sh
+└── Hangman_Frontend/
+    ├── README.md
+    ├── eslint.config.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── postcss.config.js
+    ├── public
+    │   ├── Hangman_Logo.jpeg
+    │   ├── bg-loseImg.jpeg
+    │   └── bg-wonImg.jpeg
+    ├── src
+    │   ├── api
+    │   ├── components
+    │   ├── hooks
+    │   ├── index.css
+    │   ├── layouts
+    │   ├── lib
+    │   ├── main.tsx
+    │   ├── router.tsx
+    │   ├── views
+    │   └── vite-env.d.ts
+    ├── tailwind.config.js
+    ├── tsconfig.app.json
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    └── vite.config.ts
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 📦 Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Build the project from source:
+
+1. Clone the Hangman_Frontend repository:
+```sh
+❯ git clone https://github.com/Isa-hi/Hangman_Frontend
+```
+
+2. Navigate to the project directory:
+```sh
+❯ cd Hangman_Frontend
+```
+
+3. Install the required dependencies:
+```sh
+❯ npm install
+```
+
+### 🤖 Usage
+
+To run the project in development mode:
+```sh
+❯ npm run dev
+```
+
+To run the project, execute the following command:
+
+```sh
+❯ npm run build && node dist/main.js
 ```
