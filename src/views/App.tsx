@@ -9,7 +9,7 @@ function App() {
   const { isGameStarted, isGameOver, lives } = useStore();
 
   return (
-    <div className={`flex bg-red p-16 justify-center ${!isGameStarted ? 'bg-[#1f0105]' : null }`}>
+    <div className={`flex bg-red p-8 justify-center ${!isGameStarted && 'bg-[#1f0105]' }`}>
       {isGameStarted ? (
         isGameOver ? (
           lives <= 0 ? (<LoseMenu />) : (<WonMenu />) 

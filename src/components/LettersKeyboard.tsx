@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useStore from "../hooks/useStore";
-import { gameOver, gameWon, loseLife, startGame } from "../api/HangmanController";
+import { gameOver, gameWon, loseLife } from "../api/HangmanController";
 
 export default function LettersKeyboard() {
   const {
@@ -12,7 +12,7 @@ export default function LettersKeyboard() {
     setIsGameOver,
   } = useStore();
 
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXZ".split("");
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
   const [usedLetters, setUsedLetters] = useState<string[]>([]);
 
   const handleClick = (letter: string) => {

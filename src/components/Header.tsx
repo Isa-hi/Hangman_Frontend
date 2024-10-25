@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className="bg-[#4A0E0E] p-4 flex items-center">
+    <header className="bg-[#1f0105] p-2 flex items-center">
       <div className="mr-4">
         <Link to={"/"}>
           <img
