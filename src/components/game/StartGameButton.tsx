@@ -1,5 +1,6 @@
 import { startGame } from "../../api/HangmanController";
 import useStore from "../../hooks/useStore";
+import { WORDS } from "../../constants/words";
 
 export default function StartGameButton() {
   const {
@@ -13,7 +14,7 @@ export default function StartGameButton() {
 
   const handleStartGame = () => {
     //Select random word from localstorage
-    const storedWords = localStorage.getItem("questions") || "[]";
+    const storedWords = localStorage.getItem("questions") ?? JSON.stringify(WORDS);
     const storedWordsArray = JSON.parse(storedWords);
     const randomIndex = Math.floor(Math.random() * storedWordsArray.length);
     const wordObject = storedWordsArray[randomIndex];
